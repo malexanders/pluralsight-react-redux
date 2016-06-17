@@ -31,8 +31,9 @@ import { Router, browserHistory } from 'react-router';
 /* _Tip: Also need to pass in our routes to Router from routes.js */
 import routes from './routes';
 
-
+/*Que? : Destructuring? */
 import {loadCourses} from './actions/courseActions';
+import {loadAuthors} from './actions/authorActions';
 
 /* _Tip: With webpack, we can import css just like we do javascript */
 /* Que? : Can I import scss/sass just as easily? */
@@ -63,6 +64,7 @@ import {Provider} from 'react-redux';
 * we can dispatch actions against the store. */
 const store = configureStore();
 store.dispatch(loadCourses());
+store.dispatch(loadAuthors());
 
 render(
   /*_Tip:

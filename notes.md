@@ -919,3 +919,14 @@ _TIP: Generators are functions that can be paused and resumed later.
 ### redux-promise (do not use)
 * flux standard actions and promises
 * still quite new, and the least popular of the three.
+
+____
+
+# Concepts
+
+## Desctructuring
+Allows you to break stuff apart into variables.
+
+
+# Further Studying
+https://medium.com/@rajaraodv/a-guide-for-building-a-react-redux-crud-app-7fe0b8943d0f#.yl5i8teo0

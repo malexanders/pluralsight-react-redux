@@ -1,7 +1,7 @@
 import * as types from './actionTypes';
 import courseApi from '../api/mockCourseApi';
 
-export function createCourse(course) {
+export function loadCoursesSuccess(courses) {
   /*_Tip: to add a break point in ES6, just insert debugger! */
 
 
@@ -16,7 +16,7 @@ export function createCourse(course) {
   * But it may be wise to do so in a real app, when you need to treat the failures of different async calls uniquely,
   * for now, we are going to use catch on the promise and throw that error.*/
 
-  return { type: types.CREATE_COURSE, course: course }; /*_Tip can also write 'course', instead of course: course */
+  return { type: types.LOAD_COURSES_SUCCESS, courses }; /*_Tip can also write 'course', instead of course: course */
 }
 
 /*_Tip:

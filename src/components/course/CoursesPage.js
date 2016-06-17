@@ -1,11 +1,14 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import CourseList from './CourseList';
 
 
 /*Que? Unusual syntax here, '* as' */
 import * as courseActions from '../../actions/courseActions';
 
+
+/*Que? How is CoursesPage recieving the courses as props?*/
 class CoursesPage extends React.Component {
   /*_Tip: In the constructor we:
   * initialize state,
@@ -14,60 +17,6 @@ class CoursesPage extends React.Component {
   * this is the best place to do so. */
   constructor(props, context){
     super(props, context);
-
-
-    this.state = {
-      /*_TIP:
-      * cannot set state to null, must use empty string instead,
-      * otherwise you will get errors in the browser */
-      course: { title: "" }
-    };
-
-
-    /* _Tip: binding functions to the 'this' of our courses page component
-    * There is another way to do this, by binding this in the render function
-    * However, this is not as efficient, so stick to the constructor way.
-    * Using bind in render causes a new function to be created on each render */
-
-    this.onTitleChange = this.onTitleChange.bind(this);
-    this.onClickSave = this.onClickSave.bind(this);
-  }
-
-  /*_Tip:
-  * onTitleChange and onClickSave,
-  * child functions,
-  * called by render. */
-  onTitleChange(event) {
-    /*Que? Why using const keyword here? Look up const */
-    const course = this.state.course;
-
-    /*_Tip:
-    * pulling in event
-    * pull value out of that event of of the target
-    * and then we set that to the title
-    * then update our state by calling setState.*/
-
-    course.title = event.target.value;
-    this.setState({course: course });
-  }
-
-  onClickSave() {
-    /*_Tip: this is the function that we need to call
-    * to fire off an action that redux will handle.
-    * this is the most verbose/ugly way of calling actions through redux
-    * there is a more elegant way.*/
-
-    /*_TIP: old way, without using the mapDispatchToProps argument in connect */
-    // this.props.dispatch(courseActions.createCourse(this.state.course));
-
-    /*_Tip: new way, by defining mapDispatchToProps below
-    * and passing it to connect the way we did
-    * defining which actions are available in our component,
-    * we can clean up the code in this function,
-    * making it easier to read and understand. */
-
-    this.props.actions.createCourse(this.state.course);
-
   }
 
   courseRow(course, index) {
@@ -81,26 +30,15 @@ class CoursesPage extends React.Component {
   * but here, we put the mark up inline,
   * container components ideally will just call a child component,
   * we are moving to that pattern shortly. */
-  render() {
 
+  render() {
+    const {courses} = this.props;
     return (
       <div>
         <h1>Courses</h1>
-        {/*_TIP:
-        * displaying the list of courses*/}
-
-        {this.props.courses.map(this.courseRow)}
-        <h2>Add Course</h2>
-        <input
-          type="text"
-          onChange={this.onTitleChange}
-          value={this.state.course.title} />
-
-        <input
-          type="submit"
-          value="save"
-          onClick={this.onClickSave} />
+        <CourseList courses={courses}/>
       </div>
+
     );
   }
 }
