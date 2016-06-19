@@ -9,14 +9,21 @@ Search app directory key words
 
 # Resources
 https://github.com/coryhouse/pluralsight-redux-starter
+https://medium.com/@rajaraodv/a-guide-for-building-a-react-redux-crud-app-7fe0b8943d0f#.6qj9aepd8
+https://www.quora.com/What-is-the-best-tutorial-for-learning-React-and-Redux-JS
+
+https://github.com/tayiorbeii/egghead.io_redux_course_notes
+https://egghead.io/courses
 
 __Que?: Review this points.__
+
 Automated Testing
 Linting
 Minification
 Bundling
 JSX compilation
 ES6 transpilation
+
 React:
 * clear component model
 * virtual dom
@@ -24,6 +31,11 @@ React:
 * ability to think about your app in terms of small pure functions
 
 Q: component composition model?
+
+# When to use local state?
+* fleeting data that the rest of the app will not care about
+* sometimes it is unnecessary overhead to run state through the redux flow.
+Que? example cases?
 
 
 # Babel
@@ -375,6 +387,13 @@ function mapStateToProps(state){
 * And, we declare what actions we want to expose on props as well.
 
 #### mapStateToProps
+* can often get larger and complicated
+	* especially when:
+	* adding filtering, sorting, and mapping to our app
+
+##### Testing
+* if you need to test mapStateToProps, consider extracting just the complicated pieces into separate selectors. Makes it much easier!
+* plain pure functions that are easy to test
 
 #### mapDispatchToProps()
 
@@ -504,7 +523,7 @@ _Tip: Unidirectional Data flow philosophy:
 Data flows down, actions flow up._
 ### One Immutable Store
 * by immutable, I mean the state can't be changed
-* aids debuggin
+* aids debugging
 * supports server rendering
 * and makes things like undo redo, easily possible
 
@@ -558,9 +577,6 @@ Some example actions may be:
 Q: You can program your standard CRUD actions using actions?
 
 __When actions are dispatched it ultimately affects what data is in the store__
-
-
-
 
 ### Store
 * once the netw state is returned from a reducer, the store is updated
@@ -863,6 +879,12 @@ Three Most Popular Players for handling async calls in redux:
 ### redux-thunk (most simple to start, testing isn't the cleanest however)
 __most to sagas when you feel pain points and get more comfortable with the power of generators__
 
+* thunks:
+	* handle asynchrony
+	* often dispatch multiple actions
+	* and also, often interact with web apis
+	(great for handling google maps queries etc.)
+
 * written by dan abromov, who also created redux
 * allows you to return functions from your action creators instead of objects
 
@@ -920,13 +942,230 @@ _TIP: Generators are functions that can be paused and resumed later.
 * flux standard actions and promises
 * still quite new, and the least popular of the three.
 
+
+# Testing the Front End
+
+What: React Components and Redux
+How: Mocha(testing framework) with Expect(assertion library)
+Where: In-memory DOM via JSDOM
+Helper: Enzyme(pulls all this together into a nice easy to use package)
+
+## Testing React Components
+### Testing Approach
+* Mocha, Expect, React Test Utils, and Enzyme
+* In-memory DOM via Node
+_tested react presentation components_
+
+### Two core components to consider
+* Test Markup
+	* for a certain set of props, do we get the expected output?
+	* service area should be minimal for container components
+	* markup belongs in presentation components
+	* so ideally, the only markup in a container component is a reference to a child component
+* Test behavior
+	* given a click, scroll, drag, change, what happens?
+	* do we get the expected behaviour?
+
+## Testing Container Components
+* Tricky because they are all wrapped in a call to connect i.e <Provider>
+* the connect function assumes that our app is ultimately wrapped in a provider component
+* our container components don't export the components we wrote, instead they export the component wrapped in a call to connect.
+
+### Two Ways to Handle testing container components
+1. Can Wrap container component with react-redux's Provider compoent within your test:
+```
+<Provider store={store}>MyComponent</Provider>
+```
+* the advantage of this approach is you can actually create a custom store for the test.
+* this is useful if you want to test the redux related portions of your component.
+
+2. Add named export for unconnected component
+* if you are merely interested in testing the components rendering and local state related behaviours, you can do this.
+
+
+
+## Testing Redux
+* Connected components
+* Redux
+	* Action creators
+	* Thunks
+	* Reducers
+	* Store
+
+## Where to Test?
+### Broswer
+#### Karma
+* karma is a popular test runner to run tests in a real browser
+* opening an actual browser requires more configuration and is slower than the alternatives
+* prefer to avoid this approach.
+
+### Headless Browser
+#### Phantom JS
+
+### In-memomory DOM
+#### Enzyme
+* uses an in memory DOM behind the scenes to provide an in memory DOM.
+* fast, quick to setup, and allows us to just run our tests via node.
+
+## How to Name our test files?
+fileName.spec.js
+fileName.test.js
+
+## Where do we place our test files?
+* Mocha Default: /test
+* alternate way, place the tests alongside the file under test, why?:
+	* makes paths easier to work with, imports are nice and clean
+	* clear visibility to our test( very easy to notice a file that lacks a corresponding test file.)
+	* convenient to open
+	* move files and tests together.
+
+## Testing frameworks
+### Mocha
+* most popular
+* highly configurable
+* large ecosystem of support
+* mature, proven, huge ecosystem
+* doesn't come with an assertion library so you have to pick your own
+
+### jasmine
+* similar to mocha
+* mocha is more configurable
+
+### Jest
+* facbook
+* similar to jasmine
+
+### tape
+* leanest and simplest of the bunch
+* leaness and configurability are it's key strengths
+
+### AVA
+* new kid on the block
+* uses babel behind the scenes
+* all preconfigured for you
+* installs all dependencies when you install AVA
+
+
+## Assertion libraries
+### Chai
+* most popular option
+
+### Expect
+* using this
+* small terse api
+* hard to google for
+
+## Helper libraries
+### React Test Utils
+* library that is specifically for testing react components
+* built and supported by facebook
+* verbose API
+Ref: facebook.github.io/react/docs/test-utils.html
+
+#### Two Rendering Options
+__shallowRender__
+* let's us render just the component we are testing, without rendering any of its children
+* useful to constrain yourself to testing a component as a unit.
+* And, to ensure that your tests aren't indirectly asserting on behaviour of child components
+* No DOM is required
+* returns an object that we would expect to see in the real DOM.
+* prefer this approach when possible because it's fast and simple.
+
+__renderIntoDocument__
+* actually renders the component into the DOM
+* requires a DOM to be present
+* doesn't mean you have fire up a browser to use it
+* this is when libraries like JS DOm come in handy
+	* this library offers a simulated DOM in node to interact with, just as if you are in a browser.
+
+#### DOM Interactions
+* these are clunky and wordy
+* there are some alternatives to using this API.
+
+__findRenderedDOMComponentWithTag__
+* useful for finding specific DOM elements by tag
+
+__scryRenderedDOMComponentsWithTag__
+* finds components by tag name
+* refers to peering through a crystal ball(kind of awful).
+
+__Simulate__
+* once you have reference to specific element you can simulate interactions to specific actions on the element using the simulate function.
+	* clicks
+	* keypresses
+* useful for simulating actions on your component and then asserting on the outcome of the interaction.
+
+### Enzyme
+* an abstraction
+* ultimately call React Test Utils behind the scenes
+* JSDOM(In-memory DOM)
+* Cheerio( Fast jQuery style selectors)
+* don't have to configure these tools to make them work together. Enzyme pulls them together in a nice logical way.
+* don't have to open the browser...our test just run in memory via node.
+
+__find__
+* ultra versatile
+* accepts a useful subset of css selectors
+* if you already know jQuery, it's really easy to find what you are looking for with enzyme
+* offers a lot more than just find
+
+ref: github.com/airbnb/enzyme
+
+# Production Build
+* dev build is to large for production
+* development process doesn't generate any actual physical files. Everything is being served by webpack - it just reads the files in the source directory and served the processed files from memory
+* for production, we need to write real physical files to the file system - so that our webserver can serve them up.
+
+/src
+* source code
+
+/dist
+* production build
+* in other words, our distribution
+* our goal for production, is to bundle our entire applicaion into three files:
+	* index.html(minified and bundled)
+	* bundle.js(minified and bundle)
+	* styles.css(references the two files above)
+
+## Automated Build process
+* lints and runs our tests
+* bundles all javascript and css into a single minified file.
+* generate source maps for both so we can debug production issues
+* exclude dev specific code like hot re-loading
+* Build React in production mode
+	* dev specific features like PropTypes are disabled for optimal performance
+* open prod build in the browser to see the results.
+
 ____
 
 # Concepts
 
-## Desctructuring
-Allows you to break stuff apart into variables.
+## Arrow Functions
+https://toddmotto.com/es6-arrow-functions-syntaxes-and-lexical-scoping/
 
+## var vs let
+essentially:
 
-# Further Studying
-https://medium.com/@rajaraodv/a-guide-for-building-a-react-redux-crud-app-7fe0b8943d0f#.yl5i8teo0
+var has function scope
+* when declared inside of a for loop for example - it is available outside of that loop, within the function in which the loop is contained.
+
+let has block scope
+* when declared inside of a for loop, it is not available outside of that loop, within the function in which the loop is contained.
+* let is the preffered choice and seems to take the place of var.
+
+## Destructuring
+* Allows you to break stuff apart into variables.
+
+## super(props) in constructor
+http://stackoverflow.com/questions/30571875/whats-the-difference-between-super-and-superprops-in-react-when-using-e?rq=1
+
+## Immutable Data common tools: spread operator, map, filter, Object.assign
+Que? Expand on these concepts :
+spread operator
+map
+filter
+Object.assign
+___
+
+# Review
+132 - Testing Redux - Testing Connected React Components

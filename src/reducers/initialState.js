@@ -6,11 +6,12 @@
 * this is helpful because,
 * as you create more and more reducers,
 * it gets tricky to remember exactly what is in the store,
-* this shows what our store looks like, 
-* all reducers are dealing with slice of this store, 
+* this shows what our store looks like,
+* all reducers are dealing with slice of this store,
 * now we have a picture of how our store is initialized. */
 
 export default {
   authors: [],
-  courses: []
-}
+  courses: [],
+  ajaxCallsInProgress: 0
+};

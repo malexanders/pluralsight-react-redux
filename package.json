@@ -62,7 +62,9 @@
     "//": " tell mocha to run the testSetup",
     "//": " and to run any tests that it finds in our src directory",
     "//": " following convention of ending all test files in test.js",
-    "test": "mocha --reporter progress tools/testSetup.js \"src/**/*.test.js\"",
+    "//": " the spec reporter can be more helpful when writing test",
+    "//": " will see more detail about the specific tests that we've written",
+    "test": "mocha --reporter spec tools/testSetup.js \"src/**/*.test.js\"",
 
     "//": "_Tip:",
     "//": "calling test script and telling it to use the watch flag ",

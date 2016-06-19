@@ -1,5 +1,7 @@
 import * as types from './actionTypes';
 import courseApi from '../api/mockCourseApi';
+import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
+
 
 export function loadCoursesSuccess(courses) {
   /*_Tip: to add a break point in ES6, just insert debugger! */
@@ -19,12 +21,24 @@ export function loadCoursesSuccess(courses) {
   return { type: types.LOAD_COURSES_SUCCESS, courses }; /*_Tip can also write 'course', instead of course: course */
 }
 
+export function createCourseSuccess(course) {
+  return {type: types.CREATE_COURSE_SUCCESS, course};
+}
+
+export function updateCourseSuccess(course) {
+  return {type: types.UPDATE_COURSE_SUCCESS, course};
+}
+
+
 /*_Tip:
 * first thunk
 * a thunk always returns a function that accepts dispatch*/
 
 export function loadCourses() {
   return function(dispatch) {
+
+    dispatch(beginAjaxCall());
+
     /*_Tip:
     * getAllCourses() returns a promise,
     * often how we would want to wire up any kind of a proxy with our apis to return a promise
@@ -37,6 +51,38 @@ export function loadCourses() {
       dispatch(loadCoursesSuccess(courses));
     }).catch(error => {
       /* Que? look up throw docs */
+      throw(error);
+    });
+  };
+}
+
+export function saveCourse(course) {
+  /*_Tip:
+  * notice the optional parameter getState
+  * this is useful for cases where you are wanting to access the redux
+  * store and get particular peices of state out of it right here
+  * without having to pass it in as a parameter
+  * not needed in this case,
+  * in larger application it can be beneficial to get pieces of state that you need
+  * to work within your thunk */
+  return function(dispatch, getState) {
+    dispatch(beginAjaxCall());
+    return courseApi.saveCourse(course).then(course => {
+      course.id ? dispatch(updateCourseSuccess(course)) :
+        dispatch(createCourseSuccess(course));
+    }).catch(error => {
+      dispatch(ajaxCallError(error));
+      /*_Tip:
+      * by just throwing an error here, the app stalls and chrome throughs an error in the console,
+      * not such a good user experience.
+      *
+      * Two Ways to handle this more elegantly:
+      * 1. dispatch a saveCourseError action right here
+      * and pass it the error message that we've received from our api call
+      *
+      * 2. handle the rejected promise at the call site
+      * which, in this case, is the ManageCoursePage,
+      * we are going with this one for this example. */
       throw(error);
     });
   };

@@ -39,7 +39,7 @@ import {loadAuthors} from './actions/authorActions';
 /* Que? : Can I import scss/sass just as easily? */
 import './styles/styles.css'; /* Webpack can import css files too! */
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
+import '../node_modules/toastr/build/toastr.min.css';
 
 import configureStore from './store/configureStore';
 

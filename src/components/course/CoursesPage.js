@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import CourseList from './CourseList';
+import {browserHistory} from 'react-router';
 
 
 /*Que? Unusual syntax here, '* as' */
@@ -17,11 +18,19 @@ class CoursesPage extends React.Component {
   * this is the best place to do so. */
   constructor(props, context){
     super(props, context);
+    this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
   }
 
   courseRow(course, index) {
     /*Que?: need to have a key any time we are iterating? Why? */
     return <div key={index}>{course.title}</div>;
+  }
+
+  /*_Tip:
+  * could write this in an arrow function also
+  * Que? how would that look? */
+  redirectToAddCoursePage() {
+    browserHistory.push('/course');
   }
 
   /*_Tip
@@ -36,6 +45,10 @@ class CoursesPage extends React.Component {
     return (
       <div>
         <h1>Courses</h1>
+        <input type="submit"
+               value="Add Course"
+               className="btn btn-primary"
+               onClick={this.redirectToAddCoursePage}/>
         <CourseList courses={courses}/>
       </div>
 
