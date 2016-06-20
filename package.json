@@ -69,8 +69,14 @@
     "//": "_Tip:",
     "//": "calling test script and telling it to use the watch flag ",
     "//": "run our tests and watch our files",
-    "test:watch" : "npm run test -- --watch"
+    "test:watch" : "npm run test -- --watch",
 
+	"clean-dist": "npm run remove-dist && mkdir dist",
+	
+
+	"prebuild": "npm-run-all clean-dist test link build:html",
+	"build": "babel-node tools/build.js",
+	"postbuild": "babel-node tools/distServer.js"
   },
   "dependencies": {
     "babel-polyfill": "6.8.0",

@@ -1,3 +1,10 @@
+/*_Tip:
+* this way,
+* eslint won't complain about the fact,
+* that we are using a file that doesn't have a default export.*/
+/* eslint-disable import/default */
+
+
 /*_Tip: this file is the apps entry point */
 /* Que?: What is entry point? */
 
@@ -41,7 +48,7 @@ import './styles/styles.css'; /* Webpack can import css files too! */
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/toastr/build/toastr.min.css';
 
-import configureStore from './store/configureStore';
+import configureStore from './store/configureStore.dev';
 
 /*_Tip:
 * Provider is a higher order component

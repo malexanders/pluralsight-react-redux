@@ -15,6 +15,8 @@ https://www.quora.com/What-is-the-best-tutorial-for-learning-React-and-Redux-JS
 https://github.com/tayiorbeii/egghead.io_redux_course_notes
 https://egghead.io/courses
 
+react-slingshot
+
 __Que?: Review this points.__
 
 Automated Testing
@@ -744,7 +746,7 @@ Is the most popular approach.
 	* if state is mutated in redux, it will introduce a bug.
 * redux-immutable-state-invariant
 	* display an error if you try to mutate state anywhere in your app.
-	* only run this in developement, because it does a lot of object copying which would degrade performance. In production.
+	* only run this in developement, because it does a lot of object copying which would degrade performance. In .
 * to programmatically enforce immutability. You can use a library like immutable.js.
 	* creates immutable javascript data structures
 	* created by facebook
@@ -1136,6 +1138,16 @@ ref: github.com/airbnb/enzyme
 	* dev specific features like PropTypes are disabled for optimal performance
 * open prod build in the browser to see the results.
 
+## Benefits
+* focused libraries like react and redux allow for much smaller production builds, compared to angular and ember.
+Que? Why exactly, look into this more.
+	* less fat essentially.
+	* optimized well for production.
+	* light weight.
+
+devBuild = 4.8MB
+prodBuild = 121k
+* huge time and bandwidth savings
 ____
 
 # Concepts
@@ -1169,3 +1181,40 @@ ___
 
 # Review
 132 - Testing Redux - Testing Connected React Components
+
+# Challenges
+1. Author Admin
+* add support for administering authors as well
+* hint: add some logic to make sure you can't delete an author who already has a course.
+
+2. Delete Course
+* add functionality to delete a course
+
+3. Hide empty course list
+* after adding power to delete a course
+* make sure you hide the empty course list, once all courses are deleted
+
+4. Unsaved Changes Message
+* message the user when they try to leave a form with unsaved changes
+
+5. Client-side validation
+* category
+* link data as well
+
+6. Handle 404's
+* special challenge is on the manage course page
+* going to need to add some logic to map state to props
+
+7. Show # courses in the Header
+* great example of how redux's single store model really pays off
+* adding this is trivial and there's no worry of it getting out of sync
+
+8. Pagination/infinite scrolling
+* to tables we are using to support large data sets
+
+9. Sort course table
+* sort course table alphabetically by title, by default, so that the last record updated or deleted isn't always placed at the bottom like it is right now.
+* mapStateToProps is where you want to get this done
+
+10. Reverty abandoned changes
+* keep old data so the user can revert changes when the user navigates to a different page without saving
