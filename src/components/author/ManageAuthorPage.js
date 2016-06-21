@@ -20,8 +20,9 @@ export class ManageAuthorPage extends React.Component {
     };
   }
 
-  saveAuthor(){
-
+  saveAuthor(event){
+    event.preventDefault();
+    this.props.actions.saveAuthor(this.state.author);
   }
 
   render() {
@@ -38,7 +39,8 @@ export class ManageAuthorPage extends React.Component {
 }
 
 ManageAuthorPage.propTypes = {
-  author: PropTypes.object.isRequired
+  author: PropTypes.object.isRequired,
+  actions: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps){
