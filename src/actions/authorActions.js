@@ -6,6 +6,10 @@ export function loadAuthorsSuccess(authors) {
   return {type: types.LOAD_AUTHORS_SUCCESS, authors};
 }
 
+export function createAuthorSuccess(author) {
+  return {type: types.CREATE_AUTHOR_SUCCESS, author};
+}
+
 export function loadAuthors() {
   return function(dispatch) {
     /*_Tip:
@@ -27,6 +31,16 @@ export function loadAuthors() {
     dispatch(beginAjaxCall());
     return AuthorApi.getAllAuthors().then(authors => {
       dispatch(loadAuthorsSuccess(authors));
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}
+
+export function saveAuthor() {
+  return function(dispatch) {
+    return AuthorApi.saveAuthor().then(author => {
+      dispatch(createAuthorSuccess(author));
     }).catch(error => {
       throw(error);
     });

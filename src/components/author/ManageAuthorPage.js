@@ -20,12 +20,16 @@ export class ManageAuthorPage extends React.Component {
     };
   }
 
+  saveAuthor(){
+
+  }
+
   render() {
     return (
       <AuthorForm
         author={this.state.author}
-        onChange={this.updateCourseState}
-        onSave={this.saveCourse}
+        onChange={this.updateAuthorState}
+        onSave={this.saveAuthor}
         errors={this.state.errors}
         saving={this.state.saving}
       />
