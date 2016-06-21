@@ -23,11 +23,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="ManageAuthorPage.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/components/author/ManageAuthorPage.js">
+          <file leaf-file-name="ManageAuthorsPage.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/components/author/ManageAuthorsPage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+                <state relative-caret-position="90">
+                  <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -54,9 +54,10 @@
           <file leaf-file-name="ManageCoursePage.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/course/ManageCoursePage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="60">
-                  <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="61" />
+                <state relative-caret-position="300">
+                  <caret line="113" column="10" selection-start-line="113" selection-start-column="10" selection-end-line="114" selection-end-column="36" />
                   <folding>
+                    <element signature="e#0#39#0" expanded="true" />
                     <element signature="e#378#439#0" expanded="true" />
                   </folding>
                 </state>
@@ -70,7 +71,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tools/testSetup.js" />
         <option value="$PROJECT_DIR$/src/index.test.js" />
         <option value="$PROJECT_DIR$/src/components/home/HomePage.js" />
         <option value="$PROJECT_DIR$/src/components/app.js" />
@@ -121,6 +121,7 @@
         <option value="$PROJECT_DIR$/src/components/author/AuthorsPage.js" />
         <option value="$PROJECT_DIR$/src/components/author/AuthorForm.js" />
         <option value="$PROJECT_DIR$/src/components/author/ManageAuthorPage.js" />
+        <option value="$PROJECT_DIR$/src/components/author/ManageAuthorsPage.js" />
       </list>
     </option>
   </component>
@@ -375,12 +376,12 @@
       <updated>1465698802035</updated>
       <workItem from="1465698803379" duration="2881000" />
       <workItem from="1465755973460" duration="17090000" />
-      <workItem from="1465941350031" duration="61651000" />
+      <workItem from="1465941350031" duration="61822000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81622000" />
+    <option name="totallyTimeSpent" value="81793000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="23" width="1451" height="873" extended-state="0" />
@@ -881,10 +882,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/author/ManageAuthorPage.js">
+    <entry file="file://$PROJECT_DIR$/src/components/author/ManageAuthorsPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        <state relative-caret-position="90">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

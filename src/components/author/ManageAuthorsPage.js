@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as authorActions from '../../actions/authorActions';
 import AuthorForm from './AuthorForm';
 
-export class ManageAuthorPage extends React.Component {
+export class ManageAuthorsPage extends React.Component {
   constructor(props, context){
     super(props, context);
 
@@ -12,7 +12,7 @@ export class ManageAuthorPage extends React.Component {
       /*FILL_IN*/
     };
   }
-  
+
   render() {
     return (
       <AuthorForm
@@ -25,3 +25,5 @@ export class ManageAuthorPage extends React.Component {
     )
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(ManageAuthorsPage);
