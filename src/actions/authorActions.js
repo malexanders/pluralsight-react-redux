@@ -37,9 +37,9 @@ export function loadAuthors() {
   };
 }
 
-export function saveAuthor() {
+export function saveAuthor(author) {
   return function(dispatch) {
-    return AuthorApi.saveAuthor().then(author => {
+    return AuthorApi.saveAuthor(author).then(author => {
       dispatch(createAuthorSuccess(author));
     }).catch(error => {
       throw(error);
