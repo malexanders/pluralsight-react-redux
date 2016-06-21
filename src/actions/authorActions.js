@@ -10,6 +10,10 @@ export function createAuthorSuccess(author) {
   return {type: types.CREATE_AUTHOR_SUCCESS, author};
 }
 
+export function updateAuthorSuccess(author) {
+  return {type: types.UPDATE_AUTHOR_SUCCESS, author};
+}
+
 export function loadAuthors() {
   return function(dispatch) {
     /*_Tip:
@@ -40,7 +44,8 @@ export function loadAuthors() {
 export function saveAuthor(author) {
   return function(dispatch) {
     return AuthorApi.saveAuthor(author).then(author => {
-      dispatch(createAuthorSuccess(author));
+      author.id ? dispatch(updateAuthorSuccess(author)) :
+        dispatch(createAuthorSuccess(author));
     }).catch(error => {
       throw(error);
     });
