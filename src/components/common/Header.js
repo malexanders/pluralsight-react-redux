@@ -20,7 +20,8 @@ const Header = ({loading}) => {
       <Link to="/about" activeClassName="active">About</Link>
       {" | "}
       <Link to="/courses" activeClassName="active">Courses</Link>
-
+      {" | "}
+      <Link to="/authors" activeClassName="active">Authors</Link>
       {/*_Tip:
       * the right hand side of this statement,
       * will only evaluate
