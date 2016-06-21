@@ -33,6 +33,10 @@ export class ManageAuthorsPage extends React.Component {
   }
 }
 
+ManageAuthorsPage.propTypes = {
+  author: PropTypes.object.isRequired
+};
+
 function mapStateToProps(state, ownProps){
   let author = {id: '', firstName: '', lastName: ''};
 
