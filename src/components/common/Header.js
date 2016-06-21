@@ -26,6 +26,7 @@ const Header = ({loading}) => {
       * the right hand side of this statement,
       * will only evaluate
       * if the left hand side is true! */}
+      
       {loading && <LoadingDots interval={100} dots={20}/>}
     </nav>
   );
