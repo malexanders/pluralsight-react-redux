@@ -49,4 +49,10 @@ function mapStateToProps(state, ownProps){
   };
 }
 
-export default connect(mapStateToProps)(ManageAuthorPage);
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(authorActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ManageAuthorPage);
