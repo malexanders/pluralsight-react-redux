@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cca59ff-d32c-4d96-ba1b-84cbeb5bfd27" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actions/authorActions.js" afterPath="$PROJECT_DIR$/src/actions/authorActions.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/author/ManageAuthorPage.js" afterPath="$PROJECT_DIR$/src/components/author/ManageAuthorPage.js" />
     </list>
     <ignored path="pluralsight-redux-starter.iws" />
@@ -23,16 +22,17 @@
     <favorites_list name="pluralsight-redux-starter" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.26086956">
+    <splitter split-orientation="horizontal" split-proportion="0.46347827">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="ManageCoursePage.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/course/ManageCoursePage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="225">
-                  <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+                <state relative-caret-position="195">
+                  <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="28" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
+                    <element signature="e#378#439#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -186,10 +186,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="mockAuthorApi.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="mockAuthorApi.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/api/mockAuthorApi.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-555">
+                <state relative-caret-position="0">
                   <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding />
                 </state>
@@ -206,11 +206,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ManageAuthorPage.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="ManageAuthorPage.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/author/ManageAuthorPage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="15">
-                  <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+                <state relative-caret-position="75">
+                  <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -625,12 +625,12 @@
       <workItem from="1465698803379" duration="2881000" />
       <workItem from="1465755973460" duration="17090000" />
       <workItem from="1465941350031" duration="64281000" />
-      <workItem from="1466473433167" duration="2144000" />
+      <workItem from="1466473433167" duration="2379000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86396000" />
+    <option name="totallyTimeSpent" value="86631000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -1066,16 +1066,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/course/ManageCoursePage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/actions/courseActions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-450">
@@ -1094,21 +1084,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/author/ManageAuthorPage.js">
+    <entry file="file://$PROJECT_DIR$/src/api/mockAuthorApi.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/course/ManageCoursePage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="28" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#378#439#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/mockAuthorApi.js">
+    <entry file="file://$PROJECT_DIR$/src/components/author/ManageAuthorPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-555">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="75">
+          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as authorActions from '../../actions/authorActions';
 import AuthorForm from './AuthorForm';
+import toastr from 'toastr';
 
 export class ManageAuthorPage extends React.Component {
   constructor(props, context){
@@ -32,7 +33,13 @@ export class ManageAuthorPage extends React.Component {
 
   saveAuthor(event){
     event.preventDefault();
-    this.props.actions.saveAuthor(this.state.author);
+    this.setState({saving: true});
+    this.props.actions.saveAuthor(this.state.author)
+      .then(() => this.redirect())
+      .catch(error => {
+        toastr.error(error);
+        this.setState({saving: false});
+      })
   }
 
 
