@@ -93,7 +93,6 @@ export function saveCourse(course) {
 }
 
 export function deleteCourse(courseId) {
-  console.log(courseId)
   return function(dispatch, getState) {
     dispatch(beginAjaxCall());
     return courseApi.deleteCourse(courseId).then(courseId => {

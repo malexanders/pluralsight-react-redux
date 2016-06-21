@@ -7,6 +7,7 @@ import {browserHistory} from 'react-router';
 
 /*Que? Unusual syntax here, '* as' */
 import * as courseActions from '../../actions/courseActions';
+import toastr from 'toastr';
 
 
 /*Que? How is CoursesPage recieving the courses as props?*/
@@ -29,7 +30,10 @@ class CoursesPage extends React.Component {
 
   deleteCourse(event){
     event.preventDefault()
-    this.props.actions.deleteCourse(event.target.value);
+    this.props.actions.deleteCourse(event.target.value)
+      .then(() => {
+        toastr.success('Course Deleted');
+      });
   }
 
   /*_Tip:
