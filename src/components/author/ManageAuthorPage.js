@@ -51,7 +51,7 @@ export class ManageAuthorPage extends React.Component {
      * on our context object,
      * this will change our url,
      * to /courses */
-    this.context.router.push('/courses');
+    this.context.router.push('/authors');
   }
 
 
@@ -68,7 +68,9 @@ export class ManageAuthorPage extends React.Component {
   }
 }
 
-
+ManageAuthorPage.contextTypes = {
+  router: PropTypes.object
+}
 
 ManageAuthorPage.propTypes = {
   author: PropTypes.object.isRequired,
