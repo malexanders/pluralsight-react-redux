@@ -33,13 +33,33 @@ export class ManageAuthorPage extends React.Component {
 
   saveAuthor(event){
     event.preventDefault();
+
+    if(!this.authorFormIsValid()) {
+
+      return;
+    }
+
     this.setState({saving: true});
     this.props.actions.saveAuthor(this.state.author)
       .then(() => this.redirect())
       .catch(error => {
         toastr.error(error);
         this.setState({saving: false});
-      })
+      });
+  }
+
+  authorFormIsValid() {
+    let formIsValid = true;
+    let errors = {};
+
+    if(this.state.author.firstName.length < 3) {
+      errors.title = "First Name Must Be At Least 3 Characters";
+      formIsValid = false;
+      console.log(errors);
+    }
+
+    this.setState({errors: errors});
+    return formIsValid;
   }
 
   redirect() {
@@ -70,7 +90,7 @@ export class ManageAuthorPage extends React.Component {
 
 ManageAuthorPage.contextTypes = {
   router: PropTypes.object
-}
+};
 
 ManageAuthorPage.propTypes = {
   author: PropTypes.object.isRequired,
@@ -83,7 +103,7 @@ function getAuthorById(authors, id){
   * what's the difference between these twp functions */
   const author = authors.filter(author => author.id == id);
   if (author) return author[0];
-  return null
+  return null;
 }
 
 function mapStateToProps(state, ownProps){

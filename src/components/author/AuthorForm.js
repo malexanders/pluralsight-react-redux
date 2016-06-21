@@ -10,7 +10,7 @@ const AuthorForm = ({author, onSave, onChange, saving, errors}) => {
         label="First Name"
         value={author.firstName}
         onChange={onChange}
-        error={errors.category}/>
+        error={errors.title}/>
 
       <TextInput
         name="lastName"
