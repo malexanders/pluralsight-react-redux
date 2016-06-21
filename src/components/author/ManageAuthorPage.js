@@ -42,6 +42,18 @@ export class ManageAuthorPage extends React.Component {
       })
   }
 
+  redirect() {
+    this.setState({saving: false});
+    toastr.success('Author saved');
+    /*_Tip:
+     * we are pushing a new item,
+     * to the router,
+     * on our context object,
+     * this will change our url,
+     * to /courses */
+    this.context.router.push('/courses');
+  }
+
 
   render() {
     return (
@@ -55,6 +67,8 @@ export class ManageAuthorPage extends React.Component {
     );
   }
 }
+
+
 
 ManageAuthorPage.propTypes = {
   author: PropTypes.object.isRequired,
