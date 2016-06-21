@@ -29,6 +29,10 @@ export function updateCourseSuccess(course) {
   return {type: types.UPDATE_COURSE_SUCCESS, course};
 }
 
+export function deleteCourseSuccess(courseId) {
+  return {type: types.DELETE_COURSE_SUCCESS, courseId};
+}
+
 
 /*_Tip:
 * first thunk
@@ -68,7 +72,7 @@ export function saveCourse(course) {
   return function(dispatch, getState) {
     dispatch(beginAjaxCall());
     return courseApi.saveCourse(course).then(course => {
-      course.id ? dispatch(updateCourseSuccess(course)) : 
+      course.id ? dispatch(updateCourseSuccess(course)) :
         dispatch(createCourseSuccess(course));
     }).catch(error => {
       dispatch(ajaxCallError(error));
@@ -83,6 +87,19 @@ export function saveCourse(course) {
       * 2. handle the rejected promise at the call site
       * which, in this case, is the ManageCoursePage,
       * we are going with this one for this example. */
+      throw(error);
+    });
+  };
+}
+
+export function deleteCourse(courseId) {
+  console.log(courseId)
+  return function(dispatch, getState) {
+    dispatch(beginAjaxCall());
+    return courseApi.deleteCourse(courseId).then(courseId => {
+      dispatch(deleteCourseSuccess(courseId));
+    }).catch(error => {
+      dispatch(ajaxCallError(error));
       throw(error);
     });
   };
