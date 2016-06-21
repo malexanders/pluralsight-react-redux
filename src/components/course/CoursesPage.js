@@ -19,11 +19,17 @@ class CoursesPage extends React.Component {
   constructor(props, context){
     super(props, context);
     this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
+    this.deleteCourse = this.deleteCourse.bind(this);
   }
 
   courseRow(course, index) {
     /*Que?: need to have a key any time we are iterating? Why? */
     return <div key={index}>{course.title}</div>;
+  }
+
+  deleteCourse(event){
+    event.preventDefault()
+    this.props.actions.deleteCourse(event.target.value);
   }
 
   /*_Tip:
@@ -49,7 +55,10 @@ class CoursesPage extends React.Component {
                value="Add Course"
                className="btn btn-primary"
                onClick={this.redirectToAddCoursePage}/>
-        <CourseList courses={courses}/>
+
+        <CourseList
+                courses={courses}
+                onDelete={this.deleteCourse}/>
       </div>
 
     );
