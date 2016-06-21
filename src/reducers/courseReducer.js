@@ -38,6 +38,9 @@ export default function courseReducer(state = initialState.courses, action){
         Object.assign({}, action.course)
       ];
 
+    case types.DELETE_COURSE_SUCCESS:
+      return [...state.filter(course => course.id !== action.courseId)];
+
     default:
       return state;
   }

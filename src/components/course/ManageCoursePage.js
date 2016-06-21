@@ -88,9 +88,9 @@ export class ManageCoursePage extends React.Component {
         toastr.error(error);
         this.setState({saving: false});
       });
-
-
   }
+
+
 
   redirect() {
     this.setState({saving: false});
