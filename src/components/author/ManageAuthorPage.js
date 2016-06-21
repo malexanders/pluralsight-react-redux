@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as authorActions from '../../actions/authorActions';
 import AuthorForm from './AuthorForm';
 
-export class ManageAuthorsPage extends React.Component {
+export class ManageAuthorPage extends React.Component {
   constructor(props, context){
     super(props, context);
 
@@ -33,7 +33,7 @@ export class ManageAuthorsPage extends React.Component {
   }
 }
 
-ManageAuthorsPage.propTypes = {
+ManageAuthorPage.propTypes = {
   author: PropTypes.object.isRequired
 };
 
@@ -45,4 +45,4 @@ function mapStateToProps(state, ownProps){
   };
 }
 
-export default connect(mapStateToProps)(ManageAuthorsPage);
+export default connect(mapStateToProps)(ManageAuthorPage);

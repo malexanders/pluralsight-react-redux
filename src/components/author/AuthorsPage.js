@@ -10,6 +10,11 @@ class AuthorsPage extends React.Component {
   constructor(props, context){
     super(props, context);
 
+    this.redirectToAddAuthorPage = this.redirectToAddAuthorPage.bind(this);
+  }
+
+  redirectToAddAuthorPage(){
+    browserHistory.push('/author');
   }
 
   render() {
