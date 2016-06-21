@@ -10,6 +10,13 @@ export class ManageAuthorsPage extends React.Component {
 
     this.state = {
       /*FILL_IN*/
+      /*Que?
+      * why are we setting state this way?
+      * creating a copy of author prop?
+      */
+      author: Object.assign({}, this.props.author),
+      errors: {},
+      saving: false
     };
   }
 
@@ -22,8 +29,16 @@ export class ManageAuthorsPage extends React.Component {
         errors={this.state.errors}
         saving={this.state.saving}
       />
-    )
+    );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ManageAuthorsPage);
+function mapStateToProps(state, ownProps){
+  let author = {id: '', firstName: '', lastName: ''};
+
+  return {
+    author: author
+  };
+}
+
+export default connect(mapStateToProps)(ManageAuthorsPage);
