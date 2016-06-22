@@ -11,10 +11,12 @@ import LoadingDots from './LoadingDots';
  * says, when this link is active base don the route
  * go ahead and apply this class */
 
-const Header = ({loading}) => {
+const Header = ({loading, courses, authors}) => {
   return (
 
     <nav>
+      <p>{courses} courses</p>
+      <p>{authors} authors</p>
       <IndexLink to="/" activeClassName="active"> Home</IndexLink>
       {" | "}
       <Link to="/about" activeClassName="active">About</Link>
@@ -26,7 +28,7 @@ const Header = ({loading}) => {
       * the right hand side of this statement,
       * will only evaluate
       * if the left hand side is true! */}
-      
+
       {loading && <LoadingDots interval={100} dots={20}/>}
     </nav>
   );
