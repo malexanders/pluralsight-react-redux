@@ -19,7 +19,9 @@ class App extends React.Component {
       /* Que?: What does container-fluid do bootstrap? */
       <div className="container-fluid">
         <Header
-          loading={this.props.loading} />
+          loading={this.props.loading}
+          courses={this.props.courses}
+          authors={this.props.authors}/>
         {this.props.children}
       </div>
     );
@@ -28,7 +30,10 @@ class App extends React.Component {
 
 App.propTypes = {
   children: PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  courses: PropTypes.number,
+  authors: PropTypes.number
+
 };
 
 /*_Tip:
@@ -43,7 +48,9 @@ function mapStateToProps(state, ownProps) {
     * basically,
     * we are converting the number of ajax calls to a boolean
     * if the number of ajax calls in state is greater than 0 return true */
-    loading: state.ajaxCallsInProgress > 0
+    loading: state.ajaxCallsInProgress > 0,
+    courses: state.courses.length,
+    authors: state.authors.length
   };
 }
 
