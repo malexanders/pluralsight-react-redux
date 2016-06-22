@@ -98,8 +98,8 @@ function mapStateToProps(state, ownProps) {
     if(a.title > b.title)
       return 1
     return 0
-  })
-
+  }
+    
   /*_Tip: returns properties that we would like to see exposed on our compoenents*/
   return {
     /*_Tip:
