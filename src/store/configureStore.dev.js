@@ -1,5 +1,5 @@
 /* Que? What is middle ware exactly?*/
-import {createStore, applyMiddleware} from 'redux';
+import {createStore, applyMiddleware, compose} from 'redux';
 import rootReducer from '../reducers';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 
@@ -14,21 +14,11 @@ import thunk from 'redux-thunk';
 /*Que? What does adding rootReducer in createStore function do?
 * does it wire up the courseActions with the courseReducer? */
 export default function configureStore(initialState) {
-  return createStore(
-    rootReducer,
-    initialState,
-    /*_Tip: could add more arguments to the applyMiddlware function
-    * if there were more middleware we wanted to use */
-
-    /*_Tip:
-    * can pass as many pieces of middleware as we want
-    * to the apply middleware function */
-
-    /*_Tip:
-    * reduxImmutableStateInvariant is only meant to be used in dev
-    * it gives us a warning when we accidentally mutate state */
-    applyMiddleware(thunk, reduxImmutableStateInvariant())
-  );
+    const store = createStore(rootReducer, initialState, compose(
+      applyMiddleware(thunk, reduxImmutableStateInvariant()),
+      window.devToolsExtension ? window.devToolsExtension() : f => f
+    ));
+    return store;
 }
 
 /*_Tip:
