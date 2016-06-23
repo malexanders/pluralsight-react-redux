@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {authorsFormattedForDropdown} from '../../selectors/selectors';
 import * as courseActions from '../../actions/courseActions';
+
 /*Que? Why do I need courseActions, but not authorsActions here?
  * see bindActionsCreator method at bottom of this file. */
 
@@ -20,11 +21,25 @@ export class ManageCoursePage extends React.Component {
     this.state = {
       course: Object.assign({}, this.props.course),
       errors: {},
-      saving: false
+      saving: false,
+      isSaved: false
     };
+
+    this.routerWillLeave = this.routerWillLeave.bind(this);
 
     this.updateCourseState = this.updateCourseState.bind(this);
     this.saveCourse = this.saveCourse.bind(this);
+  }
+
+  componentDidMount() {
+
+    if(this.context.router){
+      console.log(this.context.router.setRouteLeaveHook(this.props.route, this.routerWillLeave));
+    }
+  }
+
+  componentWillUnmount() {
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -32,7 +47,6 @@ export class ManageCoursePage extends React.Component {
       //Necessary to populate form when existing course is loaded directly
       this.setState({course: Object.assign({}, nextProps.course)});
     }
-
   }
 
   /*_Tip:
@@ -83,14 +97,20 @@ export class ManageCoursePage extends React.Component {
      * once the ajax call has failed,
      * we also need to make sure to update our saving state back to false */
     this.props.actions.saveCourse(this.state.course)
-      .then(() => this.redirect())
+      .then(() => {
+        this.setState({isSaved: true});
+        this.redirect()
+      })
       .catch(error => {
         toastr.error(error);
         this.setState({saving: false});
       });
   }
 
-
+  routerWillLeave (nextState, router) {
+    if(!this.state.isSaved)
+      return 'Your work is not saved! Are you sure you want to leave?';
+  }
 
   redirect() {
     this.setState({saving: false});

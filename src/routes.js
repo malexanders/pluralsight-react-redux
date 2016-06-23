@@ -8,6 +8,7 @@ import AuthorsPage from './components/author/AuthorsPage';
 import ManageAuthorPage from './components/author/ManageAuthorPage';
 import ManageCoursePage from './components/course/ManageCoursePage'; //eslint-disable-line import/no-named-as-default
 
+
 export default (
 
   /*_Tip:
@@ -29,3 +30,5 @@ export default (
     <Route path="author/:id" component={ManageAuthorPage} />
   </Route>
 );
+
+
