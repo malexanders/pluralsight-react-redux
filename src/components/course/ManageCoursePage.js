@@ -34,11 +34,12 @@ export class ManageCoursePage extends React.Component {
   componentDidMount() {
 
     if(this.context.router){
-      console.log(this.context.router.setRouteLeaveHook(this.props.route, this.routerWillLeave));
+      this.context.router.setRouteLeaveHook(this.props.route, this.routerWillLeave);
     }
   }
 
   componentWillUnmount() {
+    
 
   }
 
