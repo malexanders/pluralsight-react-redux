@@ -29,7 +29,7 @@ class CoursesPage extends React.Component {
   }
 
   deleteCourse(event){
-    event.preventDefault()
+    event.preventDefault();
     this.props.actions.deleteCourse(event.target.value)
       .then(() => {
         toastr.success('Course Deleted');
@@ -97,7 +97,7 @@ function mapStateToProps(state, ownProps) {
       return -1;
     if(a.title > b.title)
       return 1;
-    return 0
+    return 0;
   });
 
   /*_Tip: returns properties that we would like to see exposed on our compoenents*/

@@ -55,7 +55,7 @@ export class ManageAuthorPage extends React.Component {
     if(this.state.author.firstName.length < 3) {
       errors.title = "First Name Must Be At Least 3 Characters";
       formIsValid = false;
-      console.log(errors);
+      
     }
 
     this.setState({errors: errors});

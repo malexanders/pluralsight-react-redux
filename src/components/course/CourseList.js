@@ -4,7 +4,7 @@ import CourseListRow from './CourseListRow';
 const CourseList = ({courses, onDelete}) => {
 
   if(courses.length === 0) {
-    return <span />
+    return <span />;
   }
 
   return (
@@ -28,7 +28,8 @@ const CourseList = ({courses, onDelete}) => {
 };
 
 CourseList.propTypes = {
-  courses: PropTypes.array.isRequired
+  courses: PropTypes.array.isRequired,
+  onDelete: PropTypes.func.isRequired
 };
 
 export default CourseList;

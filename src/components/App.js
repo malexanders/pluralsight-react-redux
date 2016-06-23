@@ -6,6 +6,8 @@ the components that we just created. I.E the HomePage and AboutPage*/
 /* Que?: Why the {} syntax? */
 import React, {PropTypes} from 'react';
 import Header from "./common/Header";
+import { AppBar } from 'react-toolbox/lib/app_bar';
+
 
 /*_Tip:
 * must import connect
@@ -18,6 +20,7 @@ class App extends React.Component {
     return (
       /* Que?: What does container-fluid do bootstrap? */
       <div className="container-fluid">
+        <AppBar/>
         <Header
           loading={this.props.loading}
           courses={this.props.courses}

@@ -7,7 +7,7 @@ const GLOBALS = {
   * defining a node environment variable,
   * to set react for production*/
   'process.env.NODE_ENV': JSON.stringify('production')
-}
+};
 
 export default {
     debug: true,

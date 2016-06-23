@@ -38,16 +38,15 @@ export class ManageCoursePage extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    
-
-  }
-
   componentWillReceiveProps(nextProps) {
     if (this.props.course.id != nextProps.course.id) {
       //Necessary to populate form when existing course is loaded directly
       this.setState({course: Object.assign({}, nextProps.course)});
     }
+  }
+
+  componentWillUnmount() {
+
   }
 
   /*_Tip:
@@ -100,7 +99,7 @@ export class ManageCoursePage extends React.Component {
     this.props.actions.saveCourse(this.state.course)
       .then(() => {
         this.setState({isSaved: true});
-        this.redirect()
+        this.redirect();
       })
       .catch(error => {
         toastr.error(error);
@@ -144,7 +143,8 @@ export class ManageCoursePage extends React.Component {
 ManageCoursePage.propTypes = {
   course: PropTypes.object.isRequired,
   authors: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  route: PropTypes.object
 };
 
 
