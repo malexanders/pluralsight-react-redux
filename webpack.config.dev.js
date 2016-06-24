@@ -33,6 +33,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
           path.resolve(__dirname, './node_modules')
         ]
       },
+      sassLoader: {
+        data: '@import "' + path.resolve(__dirname, 'src/styles/variables.scss') + '";'
+      },
+
       // Tells webpack the types of files that we want it to handle.
       module: {
           loaders: [
@@ -49,7 +53,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
                   require.resolve('style-loader'),
                   require.resolve('css-loader') + '?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
                   require.resolve('sass-loader') + '?sourceMap'
-
                 ]
               },
               {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},

@@ -17,13 +17,7 @@ const Header = ({loading, courses, authors}) => {
     <nav>
       <p>{courses} courses</p>
       <p>{authors} authors</p>
-      <IndexLink to="/" activeClassName="active"> Home</IndexLink>
-      {" | "}
-      <Link to="/about" activeClassName="active">About</Link>
-      {" | "}
-      <Link to="/courses" activeClassName="active">Courses</Link>
-      {" | "}
-      <Link to="/authors" activeClassName="active">Authors</Link>
+      
       {/*_Tip:
       * the right hand side of this statement,
       * will only evaluate

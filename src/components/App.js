@@ -6,7 +6,14 @@ the components that we just created. I.E the HomePage and AboutPage*/
 /* Que?: Why the {} syntax? */
 import React, {PropTypes} from 'react';
 import Header from "./common/Header";
-import { AppBar } from 'react-toolbox/lib/app_bar';
+import TabsTest from "./common/Tabs";
+import NavigationTest from "./common/Navigation";
+import AppBar from 'react-toolbox/lib/app_bar';
+import Button from 'react-toolbox/lib/button';
+import Navigation from 'react-toolbox/lib/navigation';
+import Link from 'react-toolbox/lib/link';
+
+
 
 
 /*_Tip:
@@ -16,11 +23,17 @@ import {connect} from 'react-redux';
 
 /* Que?: What does the extends keyword do exactly? */
 class App extends React.Component {
+
+
   render(){
     return (
       /* Que?: What does container-fluid do bootstrap? */
       <div className="container-fluid">
-        <AppBar/>
+
+        <AppBar>
+          <NavigationTest/>
+        </AppBar>
+
         <Header
           loading={this.props.loading}
           courses={this.props.courses}
